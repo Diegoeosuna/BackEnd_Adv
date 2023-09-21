@@ -3,6 +3,8 @@ const cors = require('cors');
 
 const { dataBaseConnection } = require('../db/database')
 
+const { errors } = require('celebrate')
+
 class Server {
 
     constructor(){
@@ -27,7 +29,7 @@ class Server {
     }
 
     routes(){
-        this.app.use(this.usersPath, require('../routes/users.routes'))
+        this.app.use(this.usersPath, require('../routes/users.routes'), errors())
         this.app.use(this.servicesPath, require('../routes/services.routes'))
     }
 

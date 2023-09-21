@@ -1,4 +1,17 @@
+const { required } = require('joi');
 const { Schema, model } = require('mongoose');
+
+const AdressSchema = Schema ({
+    street:{
+        type:String
+    },
+    number:{
+        type: Number
+    },
+    city:{
+        type:String
+    }
+})
 
 const UserSchema = Schema({
     userName:{
@@ -26,6 +39,10 @@ const UserSchema = Schema({
         type: Schema.Types.ObjectId,
         ref:'Service',
         required:[true, 'El servicio es requerido']
+    },
+    adress:{
+        type: AdressSchema,
+        required:[true, "La dirección es requerida"]
     }
 })
 
